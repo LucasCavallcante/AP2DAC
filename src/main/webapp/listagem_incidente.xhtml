@@ -16,26 +16,28 @@
 			<p:autoUpdate />
 		</p:messages>
 		<p:panel header="Relatos enviados">
-			<p:dataTable value="#{incidenteBean.listarDelitos()}" var="delitos">
+			<p:dataTable value="#{incidenteBean.listarDelitos()}" var="delito">
 				<p:column headerText="Nome da vítima">
-					<p:outputLabel value="#{delitos.vitima.nomeVitima}" />
+					<p:outputLabel value="#{delito.vitima.nomeVitima}" />
 				</p:column>
 
-				<p:column headerText="Nome do suspeito">
-					<p:outputLabel value="#{delitos.suspeito.nomeSuspeito}" />
+				<p:column headerText="Nome do suposto agressor">
+					<p:outputLabel value="#{delito.suspeito.nomeSuspeito}" />
 				</p:column>
 
 				<p:column headerText="Incidente">
-					<p:outputLabel value="#{delitos.incidente}" />
+					<p:outputLabel value="#{delito.incidente}" />
 				</p:column>
 
 				<p:column headerText="Data do Registro">
-					<p:outputLabel value="#{delitos.dataRegistro}" />
+					<p:outputLabel value="#{delito.dataRegistro}" />
 				</p:column>
 
 				<p:column headerText="Ações">
 					<p:commandButton value="Detalhes" update=":formulario:painel"
 						oncomplete="PF('delitosDialog').show();">
+						<f:setPropertyActionListener value="#{delito}"
+							target="#{incidenteBean.delito}" />
 					</p:commandButton>
 				</p:column>
 
@@ -43,11 +45,70 @@
 		</p:panel>
 		<p:dialog header="Detalhes do Delito" widgetVar="delitosDialog"
 			modal="true">
-			<h:panelGrid columns="2" id="painel">
-				<h:outputText value="Nome da vítima" />
+			<h:panelGrid id="painel" >
+				<p:panel  header="Detalhes da vítima">
+				<h:outputText value="Nome da vítima: " />
 				<h:outputText value="#{incidenteBean.delito.vitima.nomeVitima}" />
+				&nbsp;
+				<h:outputText value="Idade da vítima: " />
+				<h:outputText value="#{incidenteBean.delito.vitima.idadeVitima}" />
+				&nbsp;
+				<h:outputText value="Sexo da vítima: " />
+				<h:outputText value="#{incidenteBean.delito.vitima.sexoVitima}" />
+				&nbsp;
+				<h:outputText value="Turno/Série: " />
+				<h:outputText value="#{incidenteBean.delito.vitima.serieTurno}" />
+				&nbsp;
+				<h:outputText value="Endereço: " />
+				<h:outputText value="#{incidenteBean.delito.vitima.enderecoVitima}" />
+				</p:panel>
+				&nbsp;
+				<p:panel header="Detalhes do agressor">
+				<p:outputLabel value="Nome do agressor: "/>		            	
+				<p:outputLabel value="#{incidenteBean.delito.suspeito.nomeSuspeito}" />
+				&nbsp;
+				<p:outputLabel value="Idade do agressor: "/>		            	
+				<p:outputLabel value="#{incidenteBean.delito.suspeito.idadeSuspeito}" />
+				&nbsp;
+				<p:outputLabel value="Sexo do agressor: "/>		            	
+				<p:outputLabel value="#{incidenteBean.delito.suspeito.sexoSuspeito}" />
+				&nbsp;
+				<p:outputLabel value="Orientação Sexual: "/>		            	
+				<p:outputLabel value="#{incidenteBean.delito.suspeito.oriSexual}" />
+				&nbsp;
+				<p:outputLabel value="Raça: "/>		            	
+				<p:outputLabel value="#{incidenteBean.delito.suspeito.raca}" />
+				<br></br>
+				<br></br>
+				<p:outputLabel value="Identidade de gênero: "/>		            	
+				<p:outputLabel value="#{incidenteBean.delito.suspeito.idtGenero}" />
+				&nbsp;
+				<p:outputLabel value="Escolaridade: "/>		            	
+				<p:outputLabel value="#{incidenteBean.delito.suspeito.escolaridade}" />
+				&nbsp;
+				<p:outputLabel value="Grau Parentesco: "/>		            	
+				<p:outputLabel value="#{incidenteBean.delito.suspeito.grauParentesco}" />
+				&nbsp;
+				<p:outputLabel value="Profissão: "/>		            	
+				<p:outputLabel value="#{incidenteBean.delito.suspeito.profissao}" />
+				</p:panel>
+				&nbsp;
+				<p:panel  header="Detalhes do Incidente">
+				<h:outputText value="Incidente: " />
+				<h:outputText value="#{incidenteBean.delito.incidente}" />
+				&nbsp;
+				<h:outputText value="Violação: " />
+				<h:outputText value="#{incidenteBean.delito.violacao}" />
+				&nbsp;
+				<h:outputText value="Providência: " />
+				<h:outputText value="#{incidenteBean.delito.providencias}" />
+				<br></br>
+				<br></br>
+				<h:outputText value="Data de registro: " />
+				<h:outputText value="#{incidenteBean.delito.dataRegistro}" />
+				</p:panel>
 			</h:panelGrid>
-		</p:dialog>
+		</p:dialog> 
 		<p:link outcome="listagem_usuario" value="Usuários Cadastrados" />
 				&nbsp;
 		<p:link outcome="index" value="deslogar" />
