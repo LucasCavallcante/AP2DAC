@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro de Usuário</title>
+</h:head>
+<h:body>
+	<h:form id="formulario">
+		<p:messages id="messages" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+		<p:panel header="Cadastro de usuário">
+			<p:panelGrid columns="2">
+
+				<p:outputLabel value="Nome: " />
+				<p:inputText value="#{usuarioBean.usuario.nome}" required="true"
+					requiredMessage="Campo nome é obrigatório" />
+
+				<p:outputLabel value="Login: " />
+				<p:inputText value="#{usuarioBean.usuario.login}" required="true"
+					requiredMessage="Campo login é obrigatório" />
+
+				<p:outputLabel value="Senha: " />
+				<p:password value="#{usuarioBean.usuario.senha}" required="true"
+					requiredMessage="Campo senha é obrigatório" />
+
+
+				<p:outputLabel value="Data do cadastro: " />
+				<p:datePicker value="#{usuarioBean.usuario.dataCadastro}" required="true"
+					requiredMessage="Campo Data do cadastro é obrigatório" />
+
+				<p:commandButton value="Cadastrar" action="#{usuarioBean.salvar}" update= "formulario">
+				</p:commandButton>
+
+				<p:link outcome="index" value="voltar" />
+			</p:panelGrid>
+		</p:panel>
+	</h:form>
+</h:body>
+
+</html>

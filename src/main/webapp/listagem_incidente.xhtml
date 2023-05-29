@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Relatos enviados</title>
+</h:head>
+<h:body>
+	<h:form id="formulario">
+		<p:messages id="messages" showDetail="true" closable="true">
+			<p:autoUpdate />
+		</p:messages>
+		<p:panel header="Relatos enviados">
+			<p:dataTable value="#{incidenteBean.listarDelitos()}" var="delitos">
+				<p:column headerText="Nome da vítima">
+					<p:outputLabel value="#{delitos.vitima.nomeVitima}" />
+				</p:column>
+
+				<p:column headerText="Nome do suspeito">
+					<p:outputLabel value="#{delitos.suspeito.nomeSuspeito}" />
+				</p:column>
+
+				<p:column headerText="Incidente">
+					<p:outputLabel value="#{delitos.incidente}" />
+				</p:column>
+
+				<p:column headerText="Data do Registro">
+					<p:outputLabel value="#{delitos.dataRegistro}" />
+				</p:column>
+
+				<p:column headerText="Ações">
+					<p:commandButton value="Detalhes" update=":formulario:painel"
+						oncomplete="PF('delitosDialog').show();">
+					</p:commandButton>
+				</p:column>
+
+			</p:dataTable>
+		</p:panel>
+		<p:dialog header="Detalhes do Delito" widgetVar="delitosDialog"
+			modal="true">
+			<h:panelGrid columns="2" id="painel">
+				<h:outputText value="Nome da vítima" />
+				<h:outputText value="#{incidenteBean.delito.vitima.nomeVitima}" />
+			</h:panelGrid>
+		</p:dialog>
+		<p:link outcome="listagem_usuario" value="Usuários Cadastrados" />
+				&nbsp;
+		<p:link outcome="index" value="deslogar" />
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+	<h:head><title>Cadastro de Incidente</title></h:head>
+	<h:body>
+		<h:form id="formulario">
+			 <p:messages id="messages" showDetail="true" closable="true">
+	            <p:autoUpdate/>
+	        </p:messages>
+
+	        
+	        
+			<p:panel header="Cadastro de incidente">
+			
+				<p:panelGrid columns="2">
+					<h1 colspan="2">Vitima</h1><p:outputLabel value=""/>
+					
+					<p:outputLabel value="Nome Identificado (iniciais): "/>
+					<p:inputText value="#{incidenteBean.vitima.nomeVitima}" required="true" requiredMessage="Campo nome é obrigatório"/>	
+					
+					<p:outputLabel value="Sexo: "/>
+					<p:selectOneRadio value="#{incidenteBean.vitima.sexoVitima}" required="true" requiredMessage="Campo sexo é obrigatório">
+						<f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
+						<f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
+					</p:selectOneRadio>
+					
+					<p:outputLabel value="Idade: "/>
+					<p:inputNumber value="#{incidenteBean.vitima.idadeVitima}" minValue="1" decimalPlaces="0" required="true" requiredMessage="Campo idade é obrigatório"/>
+					
+					<p:outputLabel value="Série/Turno: "/>
+					<p:inputText value="#{incidenteBean.vitima.serieTurno}" required="true" requiredMessage="Campo série/turno é obrigatório"/>	
+					
+					<p:outputLabel value="Endereço: "/>
+					<p:inputText value="#{incidenteBean.vitima.enderecoVitima}" required="true" requiredMessage="Campo endereço é obrigatório"/>	
+					
+					
+					
+					
+					<h1 colspan="2">Suposto agressor</h1><p:outputLabel value=""/>
+					
+					<p:outputLabel value="Nome Identificado: "/>
+					<p:inputText value="#{incidenteBean.suspeito.nomeSuspeito}" required="true" requiredMessage="Campo nome é obrigatório"/>
+					
+					<p:outputLabel value="Sexo: "/>
+					<p:selectOneRadio value="#{incidenteBean.suspeito.sexoSuspeito}" required="true" requiredMessage="Campo sexo é obrigatório">
+						<f:selectItem itemValue="Feminino" itemLabel="Feminino"/>
+						<f:selectItem itemValue="Masculino" itemLabel="Masculino"/>
+					</p:selectOneRadio>
+					
+					<p:outputLabel value="Idade: "/>
+					<p:inputNumber value="#{incidenteBean.suspeito.idadeSuspeito}" minValue="1" decimalPlaces="0" required="true" requiredMessage="Campo idade é obrigatório"/>
+					
+					<p:outputLabel value="Grau de parentesco/relacionamento com a vítima: "/>
+					<p:inputText value="#{incidenteBean.suspeito.grauParentesco}" required="true" requiredMessage="Campo Grau de parentesco é obrigatório"/>
+					
+					<p:outputLabel value="Ocupação (Profissão): "/>
+					<p:inputText value="#{incidenteBean.suspeito.profissao}" required="true" requiredMessage="Campo profissão é obrigatório"/>
+					
+					<p:outputLabel value="Raça/cor: "/>
+					<p:selectOneRadio value="#{incidenteBean.suspeito.raca}" required="true" requiredMessage="Campo raça/cor é obrigatório">
+						<f:selectItem itemValue="Branca" itemLabel="Branca"/>
+						<f:selectItem itemValue="Preta" itemLabel="Preta"/>
+						<f:selectItem itemValue="Parda" itemLabel="Parda"/>
+						<f:selectItem itemValue="Indigena" itemLabel="Indígena"/>
+						<f:selectItem itemValue="Amarela" itemLabel="Amarela"/>
+					</p:selectOneRadio>
+					
+					<p:outputLabel value="Identidade de gênero: "/>
+					<p:selectOneRadio value="#{incidenteBean.suspeito.idtGenero}" required="true" requiredMessage="Campo gênero é obrigatório">
+						<f:selectItem itemValue="Feminino Cissexual" itemLabel="Feminino Cissexual"/>
+						<f:selectItem itemValue="Masculino Cissexual" itemLabel="Masculino Cissexual"/>
+						<f:selectItem itemValue="Feminino Transexual" itemLabel="Feminino Transexual"/>
+						<f:selectItem itemValue="Masculino transexual" itemLabel="Masculino transexual"/>
+					</p:selectOneRadio>
+					
+					<p:outputLabel value="Orientação sexual: "/>
+					<p:selectOneRadio value="#{incidenteBean.suspeito.oriSexual}" required="true" requiredMessage="Campo raça/cororientação sexual é obrigatório">
+						<f:selectItem itemValue="Heterosexual" itemLabel="Heterosexual"/>
+						<f:selectItem itemValue="Homosexual" itemLabel="Homosexual"/>
+						<f:selectItem itemValue="Bissexual" itemLabel="Bissexual"/>
+						<f:selectItem itemValue="Pansexual" itemLabel="Pansexual"/>
+						<f:selectItem itemValue="Não binário" itemLabel="Não binário"/>
+						<f:selectItem itemValue="Outro" itemLabel="Outro"/>
+					</p:selectOneRadio>
+					
+					<p:outputLabel value="Escolaridade: "/>
+					<p:selectOneRadio value="#{incidenteBean.suspeito.escolaridade}" required="true" requiredMessage="Campo escolaridade é obrigatório">
+						<f:selectItem itemValue="1°" itemLabel="1°"/>
+						<f:selectItem itemValue="2°" itemLabel="2°"/>
+						<f:selectItem itemValue="3°" itemLabel="3°"/>
+						<f:selectItem itemValue="4°" itemLabel="4°"/>
+						<f:selectItem itemValue="5°" itemLabel="5°"/>
+						<f:selectItem itemValue="6°" itemLabel="6°"/>
+						<f:selectItem itemValue="7°" itemLabel="7°"/>
+						<f:selectItem itemValue="8°" itemLabel="8°"/>
+						<f:selectItem itemValue="9°" itemLabel="9°"/>
+					</p:selectOneRadio>
+					
+					<p:outputLabel value="INCIDENTE (relate o que a criança/adolescente) contou para você."/>
+					<p:inputTextarea rows="12" cols="100" value="#{incidenteBean.delito.incidente}" required="true" requiredMessage="Campo incidente é obrigatório"/>
+					
+					<p:outputLabel value="Que tipo de violação de direito: "/>
+					<p:selectOneRadio value="#{incidenteBean.delito.violacao}" required="true" requiredMessage="Campo violação é obrigatório">
+						<f:selectItem itemValue="Violência fisica" itemLabel="Violência fisica"/>
+						<f:selectItem itemValue="Negligência" itemLabel="Negligência"/>
+						<f:selectItem itemValue="Violência sexual" itemLabel="Violência sexual"/>
+						<f:selectItem itemValue="Violência psicolígica°" itemLabel="Violência psicológica"/>
+						<f:selectItem itemValue="Automutilação" itemLabel="Automutilação"/>
+						<f:selectItem itemValue="Suicídio" itemLabel="Suicídio"/>
+						<f:selectItem itemValue="Gravidez menor de 14 anos" itemLabel="Gravidez menor de 14 anos"/>
+						<f:selectItem itemValue="Trabalho infantil" itemLabel="Trabalho infantil"/>
+						<f:selectItem itemValue="Bullying" itemLabel="Bullying"/>
+					</p:selectOneRadio>
+					
+					<p:outputLabel value="Que providências foram tomadas? "/>
+					<p:inputTextarea rows="12" cols="100" value="#{incidenteBean.delito.providencias}" required="true" requiredMessage="Campo providências é obrigatório"/>
+					
+					<p:outputLabel value="Data do Registro " />
+					<p:datePicker value="#{incidenteBean.delito.dataRegistro}" required="true"
+					requiredMessage="Campo Data do registro é obrigatório" />
+					
+					<p:commandButton value="Salvar" action="#{incidenteBean.salvar}" update="formulario"/>
+					<p:link outcome="index" value="voltar"/>
+				</p:panelGrid>
+			</p:panel>
+		</h:form>
+	</h:body>
+
+</html>
